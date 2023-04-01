@@ -3,22 +3,9 @@ using Toybox.System;
 
 class IrishGridRef extends GridRef
 {
-    // Constants
-    var WGS84_AXIS = 6378137.0d;
-    var WGS84_ECCENTRIC = 0.00669438037928458d;
+
     var MOD_AIRY_AXIS = 6377340.189d;
     var MOD_AIRY_ECCENTRIC = 0.0066705397616d;
-    // Helmert transform parms:  https://en.wikipedia.org/wiki/Helmert_transformation
-    var Helmert_xp = -482.53d;
-    var Helmert_yp =  130.596d;
-    var Helmert_zp =  -564.557d;
-    var Helmert_xr = 1.042d;
-    var Helmert_yr = 0.214d;
-    var Helmert_zr = 0.631d;
-    var Helmert_s = -8.15d;
-    var Helmert_h = 1.0d;
-    var valid = false;
-    var alpha = ["A","B","C","D","E","F","G","H","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
   // Create grid ref from WSG84 lat /long
     function initialize(lat, lon, p )
@@ -26,6 +13,21 @@ class IrishGridRef extends GridRef
         //
         // Initialise superclass
         GridRef.initialize(lat, lon, p );
+
+        // Constants
+        WGS84_AXIS = 6378137.0d;
+        WGS84_ECCENTRIC = 0.00669438037928458d;
+        // Helmert transform parms:  https://en.wikipedia.org/wiki/Helmert_transformation
+        Helmert_xp = -482.53d;
+        Helmert_yp =  130.596d;
+        Helmert_zp =  -564.557d;
+        Helmert_xr = 1.042d;
+        Helmert_yr = 0.214d;
+        Helmert_zr = 0.631d;
+        Helmert_s = -8.15d;
+        Helmert_h = 1.0d;
+        valid = false;
+        alpha = ["A","B","C","D","E","F","G","H","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
         // Check we have a valid lat & long
         if (lon == null or lat == null
